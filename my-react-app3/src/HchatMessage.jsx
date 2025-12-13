@@ -1,6 +1,5 @@
  function ChatMessage1(props){
-    const message = props.message;
-    const sender = props.sender;
+    const {message,sender} = props
     
     if(sender === "Bot"){
         return(
@@ -12,8 +11,8 @@
     } else{
          return(
         <div>
-            <img src="react.svg" width="50" />
             {message} 
+            <img src="react.svg" width="50" />
         </div>
       )
     }
