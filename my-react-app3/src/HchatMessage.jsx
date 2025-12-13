@@ -2,7 +2,7 @@
     const message = props.message;
     return(
         <div>
-        <img src="./assets/react.svg" width="50" />
+        <img src="react.svg" width="50" />
         {message} 
         </div>
     )
