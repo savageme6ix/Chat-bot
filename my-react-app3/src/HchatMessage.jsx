@@ -1,21 +1,12 @@
  function ChatMessage1(props){
     const {message,sender} = props
-    
-    if(sender === "Bot"){
-        return(
-        <div>
-            <img src="react.svg" width="50" />
-            {message} 
-        </div>
-        )
-    } else{
+
          return(
         <div>
+            {sender==="Bot" && <img src="bot.png" width="50"/>}
             {message} 
-            <img src="react.svg" width="50" />
+            {sender=== "User" && <img src="profile.jpeg" width="50"/>}
         </div>
       )
-    }
-   
  }
  export default ChatMessage1
