@@ -4,22 +4,28 @@ import ChatMessage1 from './HchatMessage'
 function App() {
   let messagee = [{
     message:"hello Chatbot",
-    sender: "User"
+    sender: "User",
+    id: "id1"
   },{
     message:"hello! How can i help you?",
-    sender:"Bot"
+    sender:"Bot",
+    id: "id2"
   },{
     message:"can you get me todays date?",
-    sender:"User"
+    sender:"User",
+    id: "id3"
   },{
     message:"Today is september 27",
-    sender:"Bot"
+    sender:"Bot",
+    id: "id4"
   },{
     message:"how about flip a coin",
-    sender:"User"
+    sender:"User",
+    id: "id5"
   },{
     message:"Sure you got tails",
-    sender:"Bot"
+    sender:"Bot",
+    id: "id6"
   }]
 
  return(
@@ -28,7 +34,7 @@ function App() {
       {messagee.map((m)=>{
        return(
       <ChatMessage1   message={m.message}
-      sender = {m.sender} />
+      sender = {m.sender} key={m.id} />
        );
     
   })}
