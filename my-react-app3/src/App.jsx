@@ -2,18 +2,38 @@ import './App.css'
 import Input from './ChatInput'
 import ChatMessage1 from './HchatMessage'
 function App() {
-  return(
+  let messagee = [{
+    message:"hello Chatbot",
+    sender: "User"
+  },{
+    message:"hello! How can i help you?",
+    sender:"Bot"
+  },{
+    message:"can you get me todays date?",
+    sender:"User"
+  },{
+    message:"Today is september 27",
+    sender:"Bot"
+  },{
+    message:"how about flip a coin",
+    sender:"User"
+  },{
+    message:"Sure you got tails",
+    sender:"Bot"
+  }]
+
+ return(
     <>
      <Input />
-     <ChatMessage1 message="hello Chatbot" sender="User"/>
-     <ChatMessage1 message="hello! How can i help you?" sender="Bot"/>
-     <ChatMessage1 message= "can you get me todays date?" sender = "User"/>
-     <ChatMessage1 message= "Today is september 27" sender="Bot"/>
-     <ChatMessage1 message= "how about flip a coin" sender="User"/>
-     <ChatMessage1 message= "Sure you got tails" sender="Bot"/>
+      {messagee.map((m)=>{
+       return(
+      <ChatMessage1   message={m.message}
+      sender = {m.sender} />
+       );
+    
+  })}
      </>
-  )
- 
+ )
 }
 
 export default App
