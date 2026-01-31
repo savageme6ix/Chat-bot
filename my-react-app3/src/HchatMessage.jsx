@@ -1,12 +1,27 @@
- function ChatMessage1(props){
-    const {message,sender} = props
+import Bot from "./bot.png"
+import Human from "./profile.jpeg"
+import  "./Main.css"
+import React, { useState } from 'react';
+function MessageBubble({ message, sender }) {
+  return (
+    <div className={`message ${sender}`}>
+      <img src={sender==='robot'? Bot : Human}/>
+      <p>{message}</p>
+    </div>
+  );
+}
 
-         return(
-        <div>
-            {sender==="Bot" && <img src="bot.png" width="50"/>}
-            {message} 
-            {sender=== "User" && <img src="profile.jpeg" width="50"/>}
-        </div>
-      )
- }
- export default ChatMessage1
+export default function ChatMessage({ChatMessage}) {
+
+  return (
+    <>
+      {ChatMessage.map((msg, index) => (
+        <MessageBubble 
+          key={index} 
+          message={msg.message} 
+          sender={msg.sender} 
+        />
+      ))}
+    </>
+  );
+}

@@ -1,44 +1,20 @@
 import './App.css'
-import Input from './ChatInput'
-import ChatMessage1 from './HchatMessage'
+import ChatMessage from "./HchatMessage.jsx"
+import Input from './ChatInput.jsx'
+import { useState } from 'react'
 function App() {
-  let messagee = [{
-    message:"hello Chatbot",
-    sender: "User",
-    id: "id1"
-  },{
-    message:"hello! How can i help you?",
-    sender:"Bot",
-    id: "id2"
-  },{
-    message:"can you get me todays date?",
-    sender:"User",
-    id: "id3"
-  },{
-    message:"Today is september 27",
-    sender:"Bot",
-    id: "id4"
-  },{
-    message:"how about flip a coin",
-    sender:"User",
-    id: "id5"
-  },{
-    message:"Sure you got tails",
-    sender:"Bot",
-    id: "id6"
-  }]
+    const [message, setChatMessage] = useState([
+    { message: "Hello Chatbot", sender: "user" },
+    { message: "Hello! How can i help you?", sender: "robot" },
+    { message: "Can you get me todays date?", sender: "user" },
+    { message: "Today is September 27", sender: "robot" }
+  ])
 
  return(
     <>
-     <Input />
-      {messagee.map((m)=>{
-       return(
-      <ChatMessage1   message={m.message}
-      sender = {m.sender} key={m.id} />
-       );
-    
-  })}
-     </>
+  <Input ChatMessage={message} setChatMessage={setChatMessage} />
+  <ChatMessage ChatMessage={message} />
+  </>
  )
 }
 
