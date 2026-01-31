@@ -8,8 +8,8 @@ function Input({ChatMessage, setChatMessage}){
             setInputText(event.target.value)
         }
 
-     function sendMessage() {
-        const response = window.Chatbot.getResponse(inputText);
+     async function sendMessage() {
+        const response = await window.Chatbot.getResponseAsync(inputText);
 
         setChatMessage(prev => [
             ...prev,
@@ -20,10 +20,26 @@ function Input({ChatMessage, setChatMessage}){
         setInputText('');
     }
 
+   async function send(event){
+      {if(event.key==='Enter'){
+        const response = await window.Chatbot.getResponseAsync(inputText);
+
+        setChatMessage(prev => [
+            ...prev,
+            { message: inputText, sender: 'user', id: crypto.randomUUID() },
+            { message: response, sender: 'robot', id: crypto.randomUUID() }
+        ]);
+
+        setInputText('');
+      }else if(event.key==='Escape'){
+        setInputText('')
+      }}
+    }
+
 
     return(
         <>
-        <input placeholder="Write message" size="30" onChange={saveInputText} value={inputText} />
+        <input placeholder="Write message" size="30" onChange={saveInputText} onKeyDown={send} value={inputText} />
         <button onClick={sendMessage}>Send</button>
         </>
     )
