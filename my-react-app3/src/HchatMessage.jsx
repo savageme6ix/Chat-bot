@@ -1,7 +1,7 @@
 import Bot from "./bot.png"
 import Human from "./profile.jpeg"
 import  "./Main.css"
-import React, { useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 function MessageBubble({ message, sender }) {
   return (
     <div className={`message ${sender}`}>
@@ -12,9 +12,15 @@ function MessageBubble({ message, sender }) {
 }
 
 export default function ChatMessage({ChatMessage}) {
-
+ const chatMessagesRef =  useRef(null)
+    useEffect(()=>{
+      const containerElem = chatMessagesRef.current;
+      if(containerElem){
+        containerElem.scrollTop=containerElem.scrollHeight;
+      }
+    },[ChatMessage])
   return (
-    <div className="chat-container">
+    <div ref={chatMessagesRef} className="chat-container">
       {ChatMessage.map((msg, index) => (
         <MessageBubble 
           key={index} 
