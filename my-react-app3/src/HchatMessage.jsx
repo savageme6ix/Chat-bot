@@ -21,13 +21,19 @@ export default function ChatMessage({ChatMessage}) {
     },[ChatMessage])
   return (
     <div ref={chatMessagesRef} className="chat-container">
-      {ChatMessage.map((msg, index) => (
-        <MessageBubble 
-          key={index} 
-          message={msg.message} 
-          sender={msg.sender} 
-        />
-      ))}
+      {ChatMessage.length === 0 ? (
+        <p className="no-messages">
+          Welcome to the chatbot project, add a prompt to the textbox
+        </p>
+      ) : (
+        ChatMessage.map((msg, index) => (
+          <MessageBubble 
+            key={index} 
+            message={msg.message} 
+            sender={msg.sender} 
+          />
+        ))
+      )}
     </div>
   );
 }
