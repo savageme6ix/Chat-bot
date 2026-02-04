@@ -39,3 +39,7 @@
 .message.robot p {
   background-color: #f0f0f0;
 }
+.chat-container{
+  overflow: scroll;
+  scrollbar-width: none;
+}

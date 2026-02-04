@@ -14,7 +14,7 @@ function MessageBubble({ message, sender }) {
 export default function ChatMessage({ChatMessage}) {
 
   return (
-    <>
+    <div className="chat-container">
       {ChatMessage.map((msg, index) => (
         <MessageBubble 
           key={index} 
@@ -22,6 +22,6 @@ export default function ChatMessage({ChatMessage}) {
           sender={msg.sender} 
         />
       ))}
-    </>
+    </div>
   );
 }
